@@ -1,0 +1,40 @@
+<div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <p type="p" class="btn btn-primary me-3" style="background-color: rgb(255, 135, 135);">Add Contact</p>
+            <form class="d-flex">
+                <div class="input-group">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <p class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></p>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+    <div class="row">
+
+        <div class="col-sm-4 my-2" *ngFor="let contact of contactDetails">
+            <div class="card mb-3 mx-4 col-md-12">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                            class="card-img mx-3 my-4" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body my-3">
+                            <h5 class="card-title">{{contact.contactName}} <p (click)="toggleFav(contact.contactId)"><i *ngIf="!contact.favourite"
+                                        class="bi bi-heart"></i> <i *ngIf="contact.favourite" class="bi bi-heart-fill"
+                                        style="color: rgb(255, 135, 135);"></i></p>
+                            </h5>
+                            <a href="#" class="btn btn-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+       
+    </div>
+
+
+</div>
