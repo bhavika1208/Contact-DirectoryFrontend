@@ -2,7 +2,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <p type="p" class="btn btn-primary me-3" style="background-color: rgb(255, 135, 135);">Add Contact</p>
+            <p type="p" class="btn btn-primary me-3" (click)="addContact()" style="background-color: rgb(255, 135, 135);">Add Contact</p>
             <form class="d-flex">
                 <div class="input-group">
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search">
@@ -27,7 +27,7 @@
                                         class="bi bi-heart"></i> <i *ngIf="contact.favourite" class="bi bi-heart-fill"
                                         style="color: rgb(255, 135, 135);"></i></p>
                             </h5>
-                            <a href="#" class="btn btn-primary">View</a>
+                            <p class="btn btn-primary" (click)="viewContacts(contact.contactId)">View</p>
                         </div>
                     </div>
                 </div>

@@ -1,1 +1,62 @@
-<p>contact-view works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Modal title</h4>
+  <button type="button" class="close btn btn-danger" (click)="activeModal.dismiss()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form *ngIf="flag">
+{{contactId}}
+    <div class="text-center">
+      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" style="width: 10rem" class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12" alt="...">
+    </div>
+
+    <div class="form-group row">
+      <label for="cintactName" class="col-sm-4 col-form-label">Contact Name</label>
+      <div class="col-md-8">
+        <div class="row">
+          <span type="text" readonly class="form-control-plaintext" id="email">{{contactDetail.contactName}}</span>
+        </div>
+      </div>
+    </div>
+  
+    <div class="form-group row">
+      <label for="cintactName" class="col-sm-4 col-form-label">Email Id</label>
+      <div class="col-md-8">
+        <div class="row" *ngFor="let email of contactDetail.emails">
+          <span type="text" readonly class="form-control-plaintext" id="email">{{email.email}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="contactName" class="col-sm-4 col-form-label">Phone Number</label>
+      <div class="col-sm-8">
+        <div class="row"  *ngFor="let phone of contactDetail.phones">
+          <span type="text" readonly class="form-control-plaintext" id="phone">{{phone.phoneNo}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="contactName" class="col-sm-4 col-form-label">Address</label>
+      <div class="col-sm-8">
+        <div class="row"  *ngFor="let address of contactDetail.addresses">
+          <span type="text" readonly class="form-control-plaintext" id="phone">{{address.address}}, {{address.addressCity}}, {{address.addressState}} - Pincode {{address.addressPincode}}</span>
+        </div>
+      </div>
+    </div>
+
+
+  
+    <div class="form-group row">
+      <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Close</button>
+</div>
