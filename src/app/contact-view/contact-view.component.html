@@ -41,8 +41,8 @@
     <div class="form-group row">
       <label for="contactName" class="col-sm-4 col-form-label">Address</label>
       <div class="col-sm-8">
-        <div class="row"  *ngFor="let address of contactDetail.addresses">
-          <span type="text" readonly class="form-control-plaintext" id="phone">{{address.address}}, {{address.addressCity}}, {{address.addressState}} - Pincode {{address.addressPincode}}</span>
+        <div class="row"  *ngFor="let address of contactDetail.addresses; let i = index;">
+          <span type="text" readonly class="form-control-plaintext" id="phone">{{address.address}}, {{city3[i]}}, {{state3[i]}} - Pincode {{address.addressPincode}}</span>
         </div>
       </div>
     </div>

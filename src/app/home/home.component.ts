@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ContactViewComponent } from '../contact-view/contact-view.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit{
 
   contactDetails: any;
 
-  constructor(private http : HttpClient, private modalService: NgbModal){
+  constructor(private http : HttpClient, private modalService: NgbModal, private router: Router, private route: ActivatedRoute){
   }
 
   ngOnInit(): void {
@@ -41,7 +42,10 @@ getContacts() {
 }
 
 addContact(){
-
+  console.log('====================================');
+  console.log("addContact");
+  console.log('====================================');
+  this.router.navigate(['/addContact'], {relativeTo : this.route});
 }
 
 

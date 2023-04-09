@@ -15,6 +15,11 @@ export class ContactViewComponent implements OnInit{
   state : any;
   @Input() contactId!: number;
   flag = false;
+  city2 : any;
+  city3 : string[] = [];
+  state2 : any;
+  state3 : string[] = [];
+  i = 0;
 
   constructor(private http : HttpClient, public activeModal: NgbActiveModal) {}
 
@@ -26,16 +31,26 @@ export class ContactViewComponent implements OnInit{
     this.http.get('http://localhost:8080/cd/contacts/'+contactId, {}).subscribe(
       (data)=>{
         this.contactDetail = data;
-        this.http.get('http://localhost:8080/cd/cities/city/'+this.contactDetail.addresses[0].addressCity, {}).subscribe(
-          (data2)=>{            
-            this.city = data2;
+        if(this.contactDetail.addresses.length > 0){
+          for(let address of this.contactDetail.addresses){
+            this.http.get('http://localhost:8080/cd/cities/city/'+address.addressCity, {}).subscribe(
+            (data2)=>{ 
+              this.city2 = data2;         
+              this.city3.push(this.city2.cityName);
+            }
+          )
           }
-        )
-        // this.http.get('http://localhost:8080/cd/cities/city/'+this.contactDetail.addressCity, {}).subscribe(
-        //   (data2)=>{
-        //     this.city = data2;
-        //   }
-        // )
+          for(let address of this.contactDetail.addresses){
+            this.http.get('http://localhost:8080/cd/states/'+address.addressState, {}).subscribe(
+            (data2)=>{ 
+              this.state2 = data2;
+              this.state3.push(this.state2.stateName);
+            }
+          )
+          }
+          console.log(this.state3);
+        }
+
         this.flag = true;
         console.log(data);
       }, (error)=>{
