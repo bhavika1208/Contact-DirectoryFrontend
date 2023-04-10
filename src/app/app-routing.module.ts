@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddContactFormComponent } from './add-contact-form/add-contact-form.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path : '', component: HomeComponent },
-  { path: 'addContact', component: AddContactFormComponent },
-  { path: 'homeComponent', component: HomeComponent }
+  { path : '', component: HomeComponent, pathMatch:'full'},
+  { path: 'addContact', component: AddContactFormComponent , pathMatch: 'full'},
+  { path: 'login', component: LoginComponent, pathMatch: 'full' },
+  // { path : 'home', component: HomeComponent, pathMatch:'full'},
 ];
 
 @NgModule({

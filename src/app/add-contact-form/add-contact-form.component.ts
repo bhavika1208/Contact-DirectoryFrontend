@@ -16,8 +16,6 @@ export class AddContactFormComponent implements OnInit {
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router) {
-
-      
     }
     
     initForm() {
